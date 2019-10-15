@@ -45,8 +45,17 @@ TODO: In the future, new_wallet will also take in a public key that you would li
 Create connection invite generates a base64 encoded invite URL. You can pass in any name for the connection_name parameter, think of this like setting the name in your contacts list.
 
     {
-      connection_name: string
+      "request": {
+        "wallet_name": string,
+        "type": "create_connection_invite",
+        "body": {
+          "connection_name": string
+        }
+      },
+      "signature": string
     }
+
+set connection_name to anything you want to name them
 
 ###    "send_invite" 
  TODO: will send an  invite to them via email/phone number
@@ -54,20 +63,60 @@ Create connection invite generates a base64 encoded invite URL. You can pass in 
 ###    "send_credential_offer" 
 Send cred offer endpoint is only valid for wallets with issuing capabilities
 
+    {
+      "request": {
+        "wallet_name": string,
+        "type": "send_credential_offer",
+        "body":{
+          "schema_name": string,
+          "connection_name": string,
+          "credential_values": {attribute_name:attribute_value, attribute_name:attribute_value}
+        }
+      },
+      "signature": string
+    }
+
 ###    "complete_invite"
 
+
 ###    "complete_offer" 
+
   TODO: Currently errors
+
 ###    "complete_challenge"
   TODO: waiting to be written
+
 ###    "get_user"
   TODO: waiting to be written
   will return the User object associated with the user account
 
 
 ## /Credential
+
 ### create_schema
+    {
+      "request": {
+        "wallet_name":string,
+        "type": "create_schema",
+        "body":{
+          "schema_name": string,
+          "attributes": [attribute,attribute]
+        }
+      },
+      "signature": string
+    }
+
 ### create_credential_definition
+    {
+      "request": {
+        "wallet_name": string,
+        "type": "create_credential_definition",
+        "body":{
+          "schema_name": string
+        }
+      },
+      "signature": string
+    }
 
 ## /Challenge
   TODO: waiting to be written
