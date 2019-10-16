@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Apollo Documentation v2 &mdash; Spaceman ID Apollo 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to Spaceman ID Apollo’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Spaceman ID Apollo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Apollo Documentation v2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#wallet">/Wallet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#new-wallet">“new_wallet”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-connection-invite">“create_connection_invite”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#send-invite">“send_invite”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#send-credential-offer">“send_credential_offer”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#complete-invite">“complete_invite”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#complete-offer">“complete_offer”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#complete-challenge">“complete_challenge”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-user">“get_user”</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#credential">/Credential</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-schema">create_schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-credential-definition">create_credential_definition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#challenge">/Challenge</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Spaceman ID Apollo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Apollo Documentation v2</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/docs.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="apollo-documentation-v2">
+<h1>Apollo Documentation v2<a class="headerlink" href="#apollo-documentation-v2" title="Permalink to this headline">¶</a></h1>
+<p>Apollo v2 has the following endpoints:</p>
+<p>/Credential</p>
+<ul class="simple">
+<li><p>Used to create schemas &amp; credential definitions &amp; get a list of them</p></li>
+</ul>
+<p>/Challenge</p>
+<ul class="simple">
+<li><p>Used to generate new connectionless challenges</p></li>
+</ul>
+<p>/Wallet</p>
+<ul class="simple">
+<li><p>Used to register a new wallet, connect with other users, issue and claim credentials, fulfil challenges and otherwise interact with your custody wallet</p></li>
+</ul>
+<p>All requets to Apollo v2 follow this format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{
+  request: {
+    wallet_name:string,
+    type?: string,
+    body?: object
+  },
+  signature: string
+}
+</pre></div>
+</div>
+<p>The signature payload must be signed by the key associated with the wallet_name passed in the request.</p>
+<p>wallet_name is the name of the wallet you’re interacting with
+type is dependant on the endpoint &amp; body is dependant on type. Read on for the breakdown of valid types and bodies.</p>
+<div class="section" id="wallet">
+<h2>/Wallet<a class="headerlink" href="#wallet" title="Permalink to this headline">¶</a></h2>
+<p>For /wallet, the following types may be used:</p>
+<div class="section" id="new-wallet">
+<h3>“new_wallet”<a class="headerlink" href="#new-wallet" title="Permalink to this headline">¶</a></h3>
+<p>New wallet is used to register a new cloud wallet. A wallet may be created for any number of users and only requires that the wallet_name is passed in. The body maybe an empty object.</p>
+<p>The return response will either be a {success:true} or an {errorMessage:string}
+errorMessages:</p>
+<ul class="simple">
+<li><p>User already exists</p></li>
+</ul>
+<p>TODO: In the future, new_wallet will also take in a public key that you would like to sign requests with. All future wallet requests would need to be signed by this key.</p>
+</div>
+<div class="section" id="create-connection-invite">
+<h3>“create_connection_invite”<a class="headerlink" href="#create-connection-invite" title="Permalink to this headline">¶</a></h3>
+<p>Create connection invite generates a base64 encoded invite URL. You can pass in any name for the connection_name parameter, think of this like setting the name in your contacts list.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;wallet_name&quot;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;create_connection_invite&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;connection_name&quot;</span><span class="p">:</span> <span class="n">string</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;signature&quot;</span><span class="p">:</span> <span class="n">string</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>set connection_name to anything you want to name them</p>
+</div>
+<div class="section" id="send-invite">
+<h3>“send_invite”<a class="headerlink" href="#send-invite" title="Permalink to this headline">¶</a></h3>
+<p>TODO: will send an  invite to them via email/phone number</p>
+</div>
+<div class="section" id="send-credential-offer">
+<h3>“send_credential_offer”<a class="headerlink" href="#send-credential-offer" title="Permalink to this headline">¶</a></h3>
+<p>Send cred offer endpoint is only valid for wallets with issuing capabilities</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;wallet_name&quot;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;send_credential_offer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:{</span>
+      <span class="s2">&quot;schema_name&quot;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+      <span class="s2">&quot;connection_name&quot;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+      <span class="s2">&quot;credential_values&quot;</span><span class="p">:</span> <span class="p">{</span><span class="n">attribute_name</span><span class="p">:</span><span class="n">attribute_value</span><span class="p">,</span> <span class="n">attribute_name</span><span class="p">:</span><span class="n">attribute_value</span><span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;signature&quot;</span><span class="p">:</span> <span class="n">string</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="complete-invite">
+<h3>“complete_invite”<a class="headerlink" href="#complete-invite" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="complete-offer">
+<h3>“complete_offer”<a class="headerlink" href="#complete-offer" title="Permalink to this headline">¶</a></h3>
+<p>TODO: Currently errors</p>
+</div>
+<div class="section" id="complete-challenge">
+<h3>“complete_challenge”<a class="headerlink" href="#complete-challenge" title="Permalink to this headline">¶</a></h3>
+<p>TODO: waiting to be written</p>
+</div>
+<div class="section" id="get-user">
+<h3>“get_user”<a class="headerlink" href="#get-user" title="Permalink to this headline">¶</a></h3>
+<p>TODO: waiting to be written
+will return the User object associated with the user account</p>
+</div>
+</div>
+<div class="section" id="credential">
+<h2>/Credential<a class="headerlink" href="#credential" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-schema">
+<h3>create_schema<a class="headerlink" href="#create-schema" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;wallet_name&quot;</span><span class="p">:</span><span class="n">string</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;create_schema&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:{</span>
+      <span class="s2">&quot;schema_name&quot;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+      <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">attribute</span><span class="p">,</span><span class="n">attribute</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;signature&quot;</span><span class="p">:</span> <span class="n">string</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-credential-definition">
+<h3>create_credential_definition<a class="headerlink" href="#create-credential-definition" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;wallet_name&quot;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;create_credential_definition&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:{</span>
+      <span class="s2">&quot;schema_name&quot;</span><span class="p">:</span> <span class="n">string</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;signature&quot;</span><span class="p">:</span> <span class="n">string</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="challenge">
+<h2>/Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
+<p>TODO: waiting to be written</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Spaceman ID Apollo’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Spaceman ID
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

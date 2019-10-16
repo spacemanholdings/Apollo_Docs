@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Apollo Documentation v1 &mdash; Spaceman ID Apollo 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Spaceman ID Apollo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs.html">Apollo Documentation v2</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Spaceman ID Apollo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Apollo Documentation v1</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/api-documentation.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="apollo-documentation-v1">
+<h1>Apollo Documentation v1<a class="headerlink" href="#apollo-documentation-v1" title="Permalink to this headline">¶</a></h1>
+<p>Apollo has a set of major endpoints with the given functionality</p>
+<p>/Agent</p>
+<ul class="simple">
+<li><p>Used by wallets to communicate ssi/agent-wire messages</p></li>
+</ul>
+<p>/Challenge</p>
+<ul class="simple">
+<li><p>“getnewchallenge” : Returns a URL with the connection invite base64 encoded</p></li>
+</ul>
+<p>/Connection</p>
+<ul class="simple">
+<li><p>“getnewinvite” : Returns a new connection invite in base64 URL</p></li>
+<li><p>“getconnectioninfo”: Returns basic information about connection (name, email)</p></li>
+<li><p>“issuecred” : Issues a credential to the user</p></li>
+</ul>
+<p>/Credential</p>
+<ul class="simple">
+<li><p>“createnewcred” : Creates a new credential to be issued</p></li>
+<li><p>“getcredbycreddefid” : Returns the schema for a given Cred ID</p></li>
+<li><p>“getallcredentials” : Returns a list of all Spaceman Credentials</p></li>
+</ul>
+<p>All requests to Apollo follow this format:</p>
+<p>All POST requests to apollo MUST have a body formatted in this manner of content-type: “application/json”. body.body should be formatted based on the requested TYPE</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{
+  client_id:string,
+  type: string,
+  body: { ? }
+}
+</pre></div>
+</div>
+<p>with x-api-key in the header related to that client ID.
+The body object depends on the type submitted</p>
+<p>While each Reply from Apollo will take this format</p>
+<p>{
+sucess: true | false,
+errorMessage?: string,
+body?: { ? }
+}</p>
+<p>errorMessage will only be included if success is false and something went wrong</p>
+</div>
+<div class="section" id="connections">
+<h1>Connections<a class="headerlink" href="#connections" title="Permalink to this headline">¶</a></h1>
+<p>Types: “getnewinvite”, “getconnectioninfo”, “issuecred”</p>
+<div class="section" id="getnewinvite">
+<h2>getnewinvite<a class="headerlink" href="#getnewinvite" title="Permalink to this headline">¶</a></h2>
+<p>Get new invite payload requires only an email to be able to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">client_id</span><span class="p">:</span> <span class="s2">&quot;xxx&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;getnewinvite&quot;</span>
+  <span class="n">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="n">email</span><span class="p">:</span> <span class="n">string</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Name: the name of the user you want to connect with
+Email: the email for the person you want to connect with</p>
+<p>Return Object</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">connection_id</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+  <span class="n">invitation_url</span><span class="p">:</span> <span class="n">string</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Connection_ID is a string that refers to the unique connection between the client and the user.
+Invitation_URL is a base64 encoded invite for the user’s wallet</p>
+<p>Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;connection_id&quot;</span><span class="p">:</span> <span class="s2">&quot;2c86c960-fd91-441c-9669-7c47e21d1c13&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;invitation_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://o9iux56e78.execute-api.us-east-1.amazonaws.com/dev/v1/agent?c_i=eyJAdHlwZSI6ICJkaWQ6c292OkJ6Q2JzTlloTXJqSGlxWkRUVUFTSGc7c3BlYy9jb25uZWN0aW9ucy8xLjAvaW52aXRhdGlvbiIsICJAaWQiOiAiZGU0YzE4YWItMGM3Zi00MGVkLWE2ZTctODg4ZWIyMWJlNDhmIiwgInJlY2lwaWVudEtleXMiOiBbIjJ4OXNXWEU1ZUthUnBrdFpqcnd1bkpBRXBiUXJ0eTlIN1E3Zms4NjUydndGIiwgIkRzRDJ4eDhxUG53YVNrTWFoZDdxYnZ6MnFHOUo3MzN2ekVpMUZEWFVUQTEyIl0sICJzZXJ2aWNlRW5kcG9pbnQiOiAiaHR0cHM6Ly9vOWl1eDU2ZTc4LmV4ZWN1dGUtYXBpLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2Rldi92MS9hZ2VudD9jbGllbnRfaWQ9c3BjaWR3ZWJhcHAxMDEwJmNvbm5lY3Rpb25faWQ9MmM4NmM5NjAtZmQ5MS00NDFjLTk2NjktN2M0N2UyMWQxYzEzIiwgImxhYmVsIjogIlNwYWNlbWFuLUlEIn0=&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getconnectioninfo">
+<h2>getconnectioninfo<a class="headerlink" href="#getconnectioninfo" title="Permalink to this headline">¶</a></h2>
+<p>The input for getconnectioninfo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">client_id</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;getconnectioninfo&quot;</span>
+  <span class="n">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">email</span><span class="p">:</span> <span class="n">string</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Email refers to the email of the connection you want to get
+The lookup will only be for users connectioned to the specified wallet.</p>
+<p>Return Object:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">email</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> 
+  <span class="n">connection_id</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> 
+  <span class="n">name</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+  <span class="n">conn_status</span><span class="p">:</span> <span class="s2">&quot;sent&quot;</span> <span class="o">|</span> <span class="s2">&quot;active&quot;</span>
+  <span class="n">credentials_issued</span><span class="p">:</span> <span class="n">string</span><span class="p">[]</span>
+  <span class="n">credentials_revoked</span><span class="p">:</span> <span class="n">string</span><span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>conn_status refers to if the user has accepted the invite or not
+credentials_issed and revoked is a list of credential_defintion_ids which point to a given schema and issuer of the credential</p>
+<p>Example</p>
+</div>
+<div class="section" id="issuecred">
+<h2>issuecred<a class="headerlink" href="#issuecred" title="Permalink to this headline">¶</a></h2>
+<p>Issue cred is used to issue a credential to a user.</p>
+<p>The input model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">client_id</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;issuecred&quot;</span><span class="p">,</span>
+  <span class="n">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">email</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="n">cred_def_id</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="n">vales</span><span class="p">:</span> <span class="p">{}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The cred_def_id is the id for the credential you want to issue
+The values object takes the form of:</p>
+<p>{
+“attribute_name”:”value”,
+“attribute_name”:”value”,
+…
+}
+For a given issuing cred_def_id</p>
+<p>Return Object
+TODO</p>
+</div>
+</div>
+<div class="section" id="credentials">
+<h1>Credentials<a class="headerlink" href="#credentials" title="Permalink to this headline">¶</a></h1>
+<p>The credentials endpoint is used to create new schemas, and fetch schemas for the credentials</p>
+<div class="section" id="createnewcred">
+<h2>createnewcred<a class="headerlink" href="#createnewcred" title="Permalink to this headline">¶</a></h2>
+<p>The input for createnewcred:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">credential_name</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+  <span class="n">attributes</span><span class="p">:</span> <span class="p">[]</span> 
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will create a new schema, then build a credential definition based off your client id. Schema is the blueprint of the credential, the credential_definition is the specific signed version issued by a given organization.</p>
+<p>For example, there might be a single drivers license schema, but 50 credential definitions as each state would issue it uniquely signed by their own keys.</p>
+<p>The Return Object</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">cred_def_id</span><span class="p">:</span><span class="n">string</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The ID of the credential definition</p>
+</div>
+<div class="section" id="getcredbycreddefid">
+<h2>getcredbycreddefid<a class="headerlink" href="#getcredbycreddefid" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="getallcredentials">
+<h2>getallcredentials<a class="headerlink" href="#getallcredentials" title="Permalink to this headline">¶</a></h2>
+<p>This will fetch all the credentials in the Spaceman Database by network</p>
+<p>TODO</p>
+</div>
+</div>
+<div class="section" id="challenges">
+<h1>Challenges<a class="headerlink" href="#challenges" title="Permalink to this headline">¶</a></h1>
+<p>The challenges endpoint takes in a callback url and returns a connectionless challenge. Right now you can you only request challenges for a given credential, but in the future this will be signficantly added to in the terms of functionality</p>
+<div class="section" id="getnewchallenge">
+<h2>getnewchallenge<a class="headerlink" href="#getnewchallenge" title="Permalink to this headline">¶</a></h2>
+<p>Input Object</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">client_id</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;issuecred&quot;</span><span class="p">,</span>
+  <span class="n">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">cred_def_id</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="n">callbackUrl</span><span class="p">:</span><span class="n">string</span><span class="p">,</span>  
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Output Object:
+{
+challenge_id: string,
+url: string
+}</p>
+<p>Challenge_ID refers to an internal designation for the challenge that you’ve generated</p>
+<p>URL is the challenge in base64 url form to be shown to wallet via QR code or similar</p>
+</div>
+</div>
+<div class="section" id="agent">
+<h1>Agent<a class="headerlink" href="#agent" title="Permalink to this headline">¶</a></h1>
+<p>This endpoint is not for use by services. This endpoint is for wallet apps to make ssi/agent-wire message requests to our wallets</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Spaceman ID
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
