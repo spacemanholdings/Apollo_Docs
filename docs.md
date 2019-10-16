@@ -119,4 +119,4 @@ Send cred offer endpoint is only valid for wallets with issuing capabilities
     }
 
 ## /Challenge
-  TODO: waiting to be written
+  TODO: still waiting to be written
