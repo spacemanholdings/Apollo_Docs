@@ -77,43 +77,43 @@ Send cred offer endpoint is only valid for wallets with issuing capabilities
     }
 
 ###    "complete_invite"
-{
-	"request": {
-		"wallet_name":string,
-		"type": "complete_invite",
-		"body": {
-			"connection_name": string,
-			"invite_url": string
-		}
-	},
-	"signature": string
-}
+    {
+      "request": {
+        "wallet_name":string,
+        "type": "complete_invite",
+        "body": {
+          "connection_name": string,
+          "invite_url": string
+        }
+      },
+      "signature": string
+    }
 
 
 ###    "complete_offer" 
 
-{
-	"request": {
-		"wallet_name": string,
-		"type":"complete_offer",
-		"body": {
-			"offerName": string
-		}
-	},
-	"signature": string
-}
+    {
+      "request": {
+        "wallet_name": string,
+        "type":"complete_offer",
+        "body": {
+          "offerName": string
+        }
+      },
+      "signature": string
+    }
 
 ###    "complete_challenge"
-{
-	"request": {
-		"wallet_name": string,
-		"type": "complete_challenge",
-		"body": {
-			"challenge_url": string
-		}
-	},
-	"signature": string
-}
+    {
+      "request": {
+        "wallet_name": string,
+        "type": "complete_challenge",
+        "body": {
+          "challenge_url": string
+        }
+      },
+      "signature": string
+    }
 ###    "get_user"
   TODO: waiting to be written
   will return the User object associated with the user account
@@ -149,14 +149,14 @@ Send cred offer endpoint is only valid for wallets with issuing capabilities
 ## /Challenge
 
 ### new_challenge
-{
-	"request": {
-		"wallet_name":string,
-		"type": "new_challenge",
-		"body": {
-			"callback_url":string,
-			"requested_attributes": [{"name":"attribute_name", restrictions?:[]}
-		}
-	},
-	"signature": string
-}
+    {
+      "request": {
+        "wallet_name":string,
+        "type": "new_challenge",
+        "body": {
+          "callback_url":string,
+          "requested_attributes": [{"name":"attribute_name", restrictions?:[]}
+        }
+      },
+      "signature": string
+    }
